@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Home = () => {
+const Home = props => {
+  const { history } = props;
   return (
     <Container>
       <Title>직업가치관검사</Title>
@@ -18,6 +19,7 @@ const Home = () => {
           FEMALE
         </label>
       </InputWrap>
+      <StartBtn onClick={() => {history.push("/test");}}>검사시작</StartBtn>
     </Container>
   );
 };
@@ -26,5 +28,6 @@ const Title = styled.div``;
 const Name = styled.div``;
 const InputWrap = styled.div``;
 const Gender = styled.div``;
+const StartBtn = styled.button``;
 
 export default Home;
