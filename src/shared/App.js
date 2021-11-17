@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Home from "../pages/Home";
+import Main from "../pages/Main";
+import Start from "../pages/Start";
 import Test from "../pages/Test";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Main} />
+        <Route exact path="/start" component={Start} />
         <Route exact path="/test" component={Test} />
       </BrowserRouter>
     </div>
