@@ -24,16 +24,17 @@ Button.defaultProps = {
 
 const ElButton = styled.button`
   width: 10rem;
-  background-color: ${props => theme.colors.mainColor};
+  background-color: ${props => theme.colors.main};
   color: ${props => theme.colors.white};
   padding: 12px 0px;
   box-sizing: border-box;
-  border: 1px ${props => theme.colors.mainColor};
+  border: 1px ${props => theme.colors.main};
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
-  border-radius: 4px;
+  border-radius: 8px;
+  cursor: pointer;
 `;
 
 export default Button;
