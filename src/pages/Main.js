@@ -22,11 +22,11 @@ const Main = props => {
         <Gender>
           <div>
             <GenderInput type="radio" value="Male" name="gender" />
-            <label>MALE</label>
+            <label>남성</label>
           </div>
           <div>
             <GenderInput type="radio" value="Female" name="gender" />
-            <label>FEMALE</label>
+            <label>여성</label>
           </div>
         </Gender>
         <ButtonWrapper>
@@ -54,6 +54,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
+  margin-top: 5rem;
   align-items: left;
   margin-bottom: 1rem;
 `;
@@ -75,20 +76,21 @@ const NameInput = styled.input`
   width: 30rem;
   height: 3.1rem;
   font-size: 1.8rem;
+  text-indent: 0.5rem;
   /* 입력시 글자색 */
-  color: ${props => theme.colors.deepgray};
+  color: ${props => theme.colors.middlegray};
   /* 배경색 */
   background-color: ${props => theme.colors.lightgray};
   /* 테두리색 */
   border: ${props => theme.colors.gray} 1px solid;
   border-radius: 6px;
   :focus {
-    outline-color: ${props => theme.colors.deepgray};
+    outline-color: ${props => theme.colors.middlegray};
   }
 `;
 
 const Gender = styled.div`
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
@@ -99,6 +101,7 @@ const Gender = styled.div`
 const GenderInput = styled.input``;
 
 const ButtonWrapper = styled.div`
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   justify-content: right;
