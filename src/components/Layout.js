@@ -12,6 +12,7 @@ const Layout = ({children}) => {
 const DefaultLayout = styled.div`
   width: 100%;
   position: relative;
+  padding: 80px 0 0 0;
   min-height: calc(100vh - 100px);
 `;
 
