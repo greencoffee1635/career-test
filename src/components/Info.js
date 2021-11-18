@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import theme from "../shared/theme";
+import ProgressBar from "./ProgressBar";
 
 const Info = props => {
   return (
@@ -9,7 +10,9 @@ const Info = props => {
       <div>
         <Title>검사 예시</Title>
       </div>
-      <div>{/* <ProgressBar /> */}</div>
+      <div>
+        <ProgressBar value={40} max={100} />
+      </div>
       <SubTitle>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요. 가치의 뜻을 잘모르겠다면 문항 아래에 있는 가치의 설명을 확인해보세요.</SubTitle>
       <Question>
         <QuestionExample>두개 가치 중에 자신에게 더 중요한 가치를 선택하세요.</QuestionExample>
@@ -56,7 +59,7 @@ const QuestionExample = styled.p`
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  text-align:center;
+  text-align: center;
 `;
 
 const AnswerExample = styled.div`
