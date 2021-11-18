@@ -5,15 +5,14 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import Button from "../elements/Button";
 import theme from "../shared/theme";
+import Logo from "../components/Logo";
 
 const Main = props => {
   const { history } = props;
   return (
     <Layout>
       <Container>
-        <Logo>
-          <eliceLogo>{eliceLogo}</eliceLogo>
-        </Logo>
+        <Logo />
         <Title>직업가치관검사</Title>
         <Name>
           <SubTitle>이름</SubTitle>
@@ -43,8 +42,6 @@ const Main = props => {
   );
 };
 
-const eliceLogo = "/* elice */";
-
 const Container = styled.div`
   position: absolute;
   top: 50%;
@@ -54,13 +51,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-`;
-
-const Logo = styled.span`
-  font-size: 2rem;
-  font-weight: 600;
-  color: ${props => theme.colors.main};
-  text-align: center;
 `;
 
 const Title = styled.h1`
