@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { RadioGroup, RadioButton } from "react-radio-buttons";
 
 // components & elements
 import Layout from "../components/Layout";
@@ -20,14 +21,14 @@ const Main = props => {
         </Name>
         <SubTitle>성별</SubTitle>
         <Gender>
-          <div>
-            <GenderInput type="radio" value="Male" name="gender" />
-            <label>남성</label>
-          </div>
-          <div>
-            <GenderInput type="radio" value="Female" name="gender" />
-            <label>여성</label>
-          </div>
+          <RadioGroup horizontal>
+            <RadioButton value="Male" rootColor="#C4C4C4" pointColor="#909090">
+              남성
+            </RadioButton>
+            <RadioButton value="Female" rootColor="#C4C4C4" pointColor="#909090">
+              여성
+            </RadioButton>
+          </RadioGroup>
         </Gender>
         <ButtonWrapper>
           <Button
@@ -74,31 +75,26 @@ const Name = styled.div`
 
 const NameInput = styled.input`
   width: 30rem;
-  height: 3.1rem;
+  height: 3.4rem;
   font-size: 1.8rem;
   text-indent: 0.5rem;
   /* 입력시 글자색 */
   color: ${props => theme.colors.middlegray};
-  /* 배경색 */
-  background-color: ${props => theme.colors.lightgray};
   /* 테두리색 */
   border: ${props => theme.colors.gray} 1px solid;
-  border-radius: 6px;
   :focus {
     outline-color: ${props => theme.colors.middlegray};
   }
 `;
 
 const Gender = styled.div`
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
   font-weight: 400;
   padding-bottom: 1.5rem;
 `;
-
-const GenderInput = styled.input``;
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;

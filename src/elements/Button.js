@@ -23,14 +23,15 @@ Button.defaultProps = {
 };
 
 const ElButton = styled.button`
-  width: 10rem;
+  width: 8rem;
+  height: 3.4rem;
   background-color: ${props => theme.colors.main};
   color: ${props => theme.colors.white};
   padding: 12px 0px;
   box-sizing: border-box;
   border: 1px ${props => theme.colors.main};
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
   vertical-align: middle;
   border-radius: 8px;
