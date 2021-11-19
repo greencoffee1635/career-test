@@ -10,7 +10,7 @@ import Logo from "../components/Logo";
 import theme from "../shared/theme";
 import ProgressBar from "../components/Progress";
 
-const Start = props => {
+const Sample = props => {
   const { history } = props;
   const [question, setQuestion] = useState([]);
   const [answer01, setAnswer01] = useState([]);
@@ -115,4 +115,4 @@ const AnswerExample = styled.div`
   padding-bottom: 1.5rem;
 `;
 
-export default Start;
+export default Sample;

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Main from "../pages/Main";
-import Start from "../pages/Start";
+import Sample from "../pages/Sample";
 import Test from "../pages/Test";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route exact path="/" component={Main} />
-        <Route exact path="/start" component={Start} />
+        <Route exact path="/sample" component={Sample} />
         <Route exact path="/test" component={Test} />
       </BrowserRouter>
     </div>

@@ -34,7 +34,7 @@ const Main = props => {
         <ButtonWrapper>
           <Button
             _onClick={() => {
-              history.push("/start");
+              history.push("/sample");
             }}
             text="검사시작"
           />
