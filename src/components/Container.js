@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Container = ({ children }) => {
   return (
-  <DefaultForm>
-    {children}
+    <DefaultForm>
+      {children}
     </DefaultForm>
     );
 };
