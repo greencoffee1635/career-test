@@ -4,6 +4,7 @@ import { RadioGroup, RadioButton } from "react-radio-buttons";
 
 // components & elements
 import Layout from "../components/Layout";
+import Container from "../components/Container";
 import Button from "../elements/Button";
 import theme from "../shared/theme";
 import Logo from "../components/Logo";
@@ -23,10 +24,10 @@ const Main = props => {
         <Gender>
           <RadioGroup horizontal>
             <RadioButton value="Male" rootColor="#C4C4C4" pointColor="#909090">
-              남성
+              여성
             </RadioButton>
             <RadioButton value="Female" rootColor="#C4C4C4" pointColor="#909090">
-              여성
+              남성
             </RadioButton>
           </RadioGroup>
         </Gender>
@@ -42,17 +43,6 @@ const Main = props => {
     </Layout>
   );
 };
-
-const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30rem;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-`;
 
 const Title = styled.h1`
   margin-top: 5rem;
