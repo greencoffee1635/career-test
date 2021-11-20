@@ -49,11 +49,11 @@ const Sample = props => {
           <QuestionExample key={question}>{question}</QuestionExample>
           <AnswerExample>
             <div>
-              <input type="radio" name="character" disabled="true" />
+              <input type="radio" name="character" disabled={true} />
               <label key={answer01}>{answer01}</label>
             </div>
             <div>
-              <input type="radio" name="character" disabled="true" />
+              <input type="radio" name="character" disabled={true} />
               <label key={answer02}>{answer02}</label>
             </div>
           </AnswerExample>
