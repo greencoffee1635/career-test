@@ -6,6 +6,7 @@ import axios from "axios";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
+import { head_1, head_3, sub_1, sub_2 } from "../elements/Text";
 import Logo from "../components/Logo";
 import theme from "../shared/theme";
 import ProgressBar from "../components/Progress";
@@ -44,7 +45,7 @@ const Sample = props => {
           </div>
           <SubTitle>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요. 가치의 뜻을 잘모르겠다면 문항 아래에 있는 가치의 설명을 확인해보세요.</SubTitle>
         </div>
-        <Question>
+        <QuestionWrapper>
           <QuestionExample key={question}>{question}</QuestionExample>
           <AnswerExample>
             <div>
@@ -56,7 +57,7 @@ const Sample = props => {
               <label key={answer02}>{answer02}</label>
             </div>
           </AnswerExample>
-        </Question>
+        </QuestionWrapper>
         <ButtonWrapper>
           <Button
             _onClick={() => {
@@ -69,16 +70,17 @@ const Sample = props => {
     </Layout>
   );
 };
-const Title = styled.h2`
+
+const Title = styled.h1`
+  ${head_1}
   margin-top: 5rem;
-  font-size: 2rem;
   align-items: left;
   margin-bottom: 2rem;
 `;
 
-const SubTitle = styled.p`
+const SubTitle = styled.h2`
+  ${head_3}
   width: 100%;
-  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 2rem;
 `;
@@ -89,7 +91,7 @@ const ButtonWrapper = styled.div`
   margin-top: 2rem;
 `;
 
-const Question = styled.p`
+const QuestionWrapper = styled.div`
   height: 13rem;
   border: 1px solid ${props => theme.colors.gray};
   background-color: ${props => theme.colors.lightgray};
@@ -97,21 +99,20 @@ const Question = styled.p`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 1rem 0 0 0;
 `;
 
 const QuestionExample = styled.p`
-  font-size: 1.1rem;
-  font-weight: 600;
+  ${sub_1}
   margin-bottom: 2rem;
   text-align: center;
 `;
 
 const AnswerExample = styled.div`
+  ${sub_2}
   width: 90%;
   display: flex;
   justify-content: space-evenly;
-  font-size: 1.1rem;
-  font-weight: 400;
   padding-bottom: 1.5rem;
 `;
 

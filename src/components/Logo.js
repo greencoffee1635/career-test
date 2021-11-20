@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // components & elements
 import theme from "../shared/theme";
+import { head_1 } from "../elements/Text";
 
 const Logo = () => {
   return (
@@ -14,9 +15,8 @@ const Logo = () => {
 
 const eliceLogo = "/* elice */";
 
-const LogoWrap = styled.span`
-  font-size: 2rem;
-  font-weight: 600;
+const LogoWrap = styled.h1`
+  ${head_1}
   color: ${props => theme.colors.main};
   text-align: center;
 `;

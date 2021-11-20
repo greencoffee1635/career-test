@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import theme from "../shared/theme";
 
+import { button } from "./Text";
+
 const Button = props => {
   const { text, _onClick } = props;
 
@@ -30,8 +32,7 @@ const ElButton = styled.button`
   padding: 12px 0px;
   box-sizing: border-box;
   border: 1px ${props => theme.colors.main};
-  font-size: 1rem;
-  font-weight: 600;
+  ${button}
   text-align: center;
   vertical-align: middle;
   border-radius: 8px;

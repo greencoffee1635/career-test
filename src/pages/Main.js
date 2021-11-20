@@ -6,6 +6,7 @@ import { RadioGroup, RadioButton } from "react-radio-buttons";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
+import { head_1, head_2 } from "../elements/Text";
 import theme from "../shared/theme";
 import Logo from "../components/Logo";
 
@@ -45,15 +46,15 @@ const Main = props => {
 };
 
 const Title = styled.h1`
+  ${head_1}
   margin-top: 5rem;
   align-items: left;
   margin-bottom: 1rem;
 `;
 
-const SubTitle = styled.p`
+const SubTitle = styled.h2`
   width: 10rem;
-  font-size: 1.4rem;
-  font-weight: 600;
+  ${head_2}
   margin-bottom: 1rem;
 `;
 
