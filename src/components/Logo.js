@@ -8,12 +8,12 @@ import { head_1 } from "../shared/textStyle";
 const Logo = () => {
   return (
     <LogoWrap>
-      <eliceLogo>{eliceLogo}</eliceLogo>
+      {EliceLogo}
     </LogoWrap>
   );
 };
 
-const eliceLogo = "/* elice */";
+const EliceLogo = "/* elice */";
 
 const LogoWrap = styled.h1`
   ${head_1}
