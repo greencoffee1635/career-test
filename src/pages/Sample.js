@@ -6,7 +6,7 @@ import axios from "axios";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
-import { head_1, head_3, sub_1, sub_2 } from "../elements/Text";
+import { head_1, head_3, sub_1, sub_2 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import theme from "../shared/theme";
 import ProgressBar from "../components/Progress";

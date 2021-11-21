@@ -6,7 +6,7 @@ import { RadioGroup, RadioButton } from "react-radio-buttons";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
-import { head_1, head_2 } from "../elements/Text";
+import { head_1, head_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 import Logo from "../components/Logo";
 

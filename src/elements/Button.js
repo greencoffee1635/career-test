@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import theme from "../shared/theme";
 
-import { button } from "./Text";
+import { button } from "../shared/textStyle";
 
 const Button = props => {
   const { text, _onClick } = props;

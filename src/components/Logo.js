@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // components & elements
 import theme from "../shared/theme";
-import { head_1 } from "../elements/Text";
+import { head_1 } from "../shared/textStyle";
 
 const Logo = () => {
   return (
