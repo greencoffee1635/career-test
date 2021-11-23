@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+
+import fetchData from "../api/fetch";
 
 // components & elements
 import Layout from "../components/Layout";
@@ -12,6 +14,27 @@ import Question from "../components/Question";
 
 const Test = props => {
   const { history } = props;
+  const [questions, setQuestions] = useState(null);
+  const [endPage, setEndPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const questionPerPage = 5;
+
+  const paginate = (arr, page, itemPerPage) => {
+    const startIndex = page * itemPerPage;
+    const endIndex = startIndex + itemPerPage;
+    return arr.slice(startIndex, endIndex);
+  };
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const data = await fetchData();
+      setQuestions(data);
+      setEndPage(Math.round(data.length / questionPerPage));
+      console.log("Test");
+    };
+    fetchQuestions();
+  }, []);
+
   return (
     <Layout>
       <Container>
@@ -22,18 +45,35 @@ const Test = props => {
           </div>
           <ProgressBar color={"#7979F7"} width={"30rem"} value={0} max={100} />
         </div>
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
+        {questions &&
+          paginate(questions, currentPage, questionPerPage).map(x => (
+            <Question title={x.title} answer1={x.answer1} answer2={x.answer2} index={x.index} />
+          ))}
         <ButtonWrapper>
-          <Button
-            _onClick={() => {
-              history.push("/result");
-            }}
-            text="검사시작"
-          ></Button>
+          {currentPage > 0 && (
+            <Button
+              _onClick={() => {
+                setCurrentPage(currentPage - 1);
+              }}
+              text="이전"
+            ></Button>
+          )}
+          {currentPage < endPage - 1 && (
+            <Button
+              _onClick={() => {
+                setCurrentPage(currentPage + 1);
+              }}
+              text="다음"
+            ></Button>
+          )}
+          {currentPage === endPage && (
+            <Button
+              _onClick={() => {
+                history.push("/result");
+              }}
+              text="제출"
+            ></Button>
+          )}
         </ButtonWrapper>
       </Container>
     </Layout>

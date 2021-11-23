@@ -1,45 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 // components & elements
 import { sub_1, sub_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 
 const Question = props => {
-  const [question, setQuestion] = useState([]);
-  const [answer01, setAnswer01] = useState([]);
-  const [answer02, setAnswer02] = useState([]);
-  const [error, setError] = useState(null);
+  const { title, answer1, answer2, index } = props;
 
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        const apiHost = process.env.REACT_APP_API_HOST
-        const apiKey = process.env.REACT_APP_API_KEY
-
-        const response = await axios.get(`${apiHost}/inspct/openapi/test/questions?apikey=${apiKey}&q=6`);
-        setQuestion(response.data.RESULT[2].question);
-        setAnswer01(response.data.RESULT[2].answer01);
-        setAnswer02(response.data.RESULT[2].answer02);
-      } catch (e) {
-        setError(e);
-      }
-    };
-    fetch();
-  }, []);
   return (
     <div>
       <QuestionWrapper>
-        <QuestionExample key={question}>{question}</QuestionExample>
+        <QuestionExample key={title}>{title}</QuestionExample>
         <AnswerExample>
           <div>
-            <input type="radio" name="character" />
-            <label key={answer01}>{answer01}</label>
+            <input type="radio" name={index} />
+            <label key={answer1}>{answer1}</label>
           </div>
           <div>
-            <input type="radio" name="character" />
-            <label key={answer02}>{answer02}</label>
+            <input type="radio" name={index} />
+            <label key={answer2}>{answer2}</label>
           </div>
         </AnswerExample>
       </QuestionWrapper>
