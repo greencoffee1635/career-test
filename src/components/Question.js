@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 // components & elements
-import { sub_1, sub_2 } from "../elements/Text";
+import { sub_1, sub_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 
 const Question = props => {
@@ -15,7 +15,10 @@ const Question = props => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`https://www.career.go.kr/inspct/openapi/test/questions?apikey=f5d2ce0778024de3fb1b12669f7fffbe&q=6`);
+        const apiHost = process.env.REACT_APP_API_HOST
+        const apiKey = process.env.REACT_APP_API_KEY
+
+        const response = await axios.get(`${apiHost}/inspct/openapi/test/questions?apikey=${apiKey}&q=6`);
         setQuestion(response.data.RESULT[2].question);
         setAnswer01(response.data.RESULT[2].answer01);
         setAnswer02(response.data.RESULT[2].answer02);

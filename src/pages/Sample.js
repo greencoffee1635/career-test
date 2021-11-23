@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 // components & elements
 import Layout from "../components/Layout";
@@ -10,21 +9,23 @@ import { head_1, head_3, sub_1, sub_2 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import theme from "../shared/theme";
 import ProgressBar from "../components/Progress";
+import fetchData from "../api/fetch";
 
 const Sample = props => {
   const { history } = props;
   const [question, setQuestion] = useState([]);
   const [answer01, setAnswer01] = useState([]);
   const [answer02, setAnswer02] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`https://www.career.go.kr/inspct/openapi/test/questions?apikey=f5d2ce0778024de3fb1b12669f7fffbe&q=6`);
-        setQuestion(response.data.RESULT[1].question);
-        setAnswer01(response.data.RESULT[1].answer01);
-        setAnswer02(response.data.RESULT[1].answer02);
+        const question = (await fetchData())[0]
+
+        setQuestion(question.question);
+        setAnswer01(question.answer01);
+        setAnswer02(question.answer02);
       } catch (e) {
         setError(e);
       }

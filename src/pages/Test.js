@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
-import { head_1 } from "../elements/Text";
+import { head_1 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
