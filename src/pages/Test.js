@@ -30,7 +30,6 @@ const Test = props => {
       const data = await fetchData();
       setQuestions(data);
       setEndPage(Math.round(data.length / questionPerPage));
-      console.log("Test");
     };
     fetchQuestions();
   }, []);
@@ -47,18 +46,21 @@ const Test = props => {
         </div>
         {questions &&
           paginate(questions, currentPage, questionPerPage).map(x => (
-            <Question title={x.title} answer1={x.answer1} answer2={x.answer2} index={x.index} />
+            <Question key={x.index} title={x.title} answer1={x.answer1} answer2={x.answer2} index={x.index} />
           ))}
         <ButtonWrapper>
-          {currentPage > 0, currentPage < 6 && (
-            <Button
-              _onClick={() => {
-                setCurrentPage(currentPage - 1);
-              }}
-              text="이전"
-            ></Button>
-          )}
-          {currentPage < endPage-1 && (
+          {
+            (currentPage > 0,
+            currentPage < 6 && (
+              <Button
+                _onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+                text="이전"
+              ></Button>
+            ))
+          }
+          {currentPage < endPage - 1 && (
             <Button
               _onClick={() => {
                 setCurrentPage(currentPage + 1);
@@ -66,7 +68,7 @@ const Test = props => {
               text="다음"
             ></Button>
           )}
-          {currentPage === endPage -1 && (
+          {currentPage === endPage - 1 && (
             <Button
               _onClick={() => {
                 history.push("/result");
