@@ -11,8 +11,8 @@ const Question = props => {
   return (
     <div>
       <QuestionWrapper>
-        <QuestionExample key={title}>{title}</QuestionExample>
-        <AnswerExample>
+        <QuestionForm key={title}>{title}</QuestionForm>
+        <AnswerForm>
           <div>
             <input type="radio" name={index} />
             <label key={answer1}>{answer1}</label>
@@ -21,7 +21,7 @@ const Question = props => {
             <input type="radio" name={index} />
             <label key={answer2}>{answer2}</label>
           </div>
-        </AnswerExample>
+        </AnswerForm>
       </QuestionWrapper>
     </div>
   );
@@ -38,13 +38,13 @@ const QuestionWrapper = styled.div`
   margin: 1rem 0 0 0;
 `;
 
-const QuestionExample = styled.p`
+const QuestionForm = styled.p`
   ${sub_1}
   margin-bottom: 2rem;
   text-align: center;
 `;
 
-const AnswerExample = styled.div`
+const AnswerForm = styled.div`
   ${sub_2}
   width: 90%;
   display: flex;

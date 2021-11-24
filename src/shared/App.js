@@ -5,6 +5,7 @@ import Main from "../pages/Main";
 import Sample from "../pages/Sample";
 import Test from "../pages/Test";
 import Result from "../pages/Result";
+import Detail from "../pages/Detail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/sample" component={Sample} />
         <Route exact path="/test" component={Test} />
         <Route exact path="/result" component={Result} />
+        <Route exact path="/detail" component={Detail} />
       </BrowserRouter>
     </div>
   );
