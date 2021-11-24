@@ -92,7 +92,7 @@ const Title = styled.h1`
 const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   margin-top: 3rem;
 `;
 
