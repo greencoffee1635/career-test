@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { RadioGroup, RadioButton } from "react-radio-buttons";
 
@@ -12,6 +12,14 @@ import Logo from "../components/Logo";
 
 const Main = props => {
   const { history } = props;
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [error, setError] = useState("");
+
+  const handleGenderChange = index => {
+    setGender(index ? "Male" : "Female");
+  };
+
   return (
     <Layout>
       <Container>
@@ -19,23 +27,32 @@ const Main = props => {
         <Title>직업가치관검사</Title>
         <Name>
           <SubTitle>이름</SubTitle>
-          <NameInput placeholder="" />
+          <NameInput placeholder="" onChange={e => setName(e.target.value)} value={name} />
         </Name>
         <SubTitle>성별</SubTitle>
         <Gender>
           <RadioGroup horizontal>
-            <RadioButton value="Male" rootColor="#C4C4C4" pointColor="#909090">
+            <RadioButton value="Male" rootColor="#C4C4C4" pointColor="#909090" onChange={handleGenderChange} checked={gender === "Female"}>
               여성
             </RadioButton>
-            <RadioButton value="Female" rootColor="#C4C4C4" pointColor="#909090">
+            <RadioButton value="Female" rootColor="#C4C4C4" pointColor="#909090" onChange={handleGenderChange} checked={gender === "Male"}>
               남성
             </RadioButton>
           </RadioGroup>
         </Gender>
         <ButtonWrapper>
+        {error.length > 0 && ` ${error}`}
           <Button
             _onClick={() => {
-              history.push("/sample");
+              if (!gender&&!name) {
+                setError("이름과 성별을 입력해주세요.");
+              } else if (!gender) {
+                setError("성별을 입력해주세요.");
+              } else if (!name) {
+                setError("이름을 입력해주세요.");
+              } else {
+                history.push("/sample");
+              }
             }}
             text="검사시작"
           />
@@ -67,8 +84,8 @@ const Name = styled.div`
 const NameInput = styled.input`
   width: 30rem;
   height: 3.4rem;
-  font-size: 1.8rem;
-  text-indent: 0.5rem;
+  font-size: 1.4rem;
+  text-indent: 0.8rem;
   /* 입력시 글자색 */
   color: ${props => theme.colors.middlegray};
   /* 테두리색 */

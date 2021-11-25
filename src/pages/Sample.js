@@ -80,6 +80,7 @@ const Sample = props => {
           </AnswerSample>
         </QuestionWrapper>
         <ButtonWrapper>
+          {error.length > 0 && ` ${error}`}
           <Button
             _onClick={() => {
               if (valid) history.push("/test");
@@ -88,7 +89,6 @@ const Sample = props => {
             text="검사시작"
           ></Button>
         </ButtonWrapper>
-        {error.length > 0 && ` ${error}`}
       </Container>
     </Layout>
   );
