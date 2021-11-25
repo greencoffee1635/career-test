@@ -37,6 +37,10 @@ const ElButton = styled.button`
   vertical-align: middle;
   border-radius: 8px;
   cursor: pointer;
+  :hover {
+    opacity: 0.9;
+    transition: 0.4s ease-in-out ;
+  }
 `;
 
 export default Button;
