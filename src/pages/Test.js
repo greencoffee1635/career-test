@@ -55,6 +55,7 @@ const Test = props => {
               <Button
                 _onClick={() => {
                   setCurrentPage(currentPage - 1);
+                  if (currentPage < 1) history.push("/sample");
                 }}
                 text="이전"
               ></Button>
