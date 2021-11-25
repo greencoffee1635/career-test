@@ -38,7 +38,7 @@ const ElButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
   :hover {
-    opacity: 0.9;
+    opacity: 0.75;
     transition: 0.4s ease-in-out ;
   }
 `;
