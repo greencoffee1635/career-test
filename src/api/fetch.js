@@ -14,7 +14,7 @@ const fetchData = async () => {
       if (x[`answer0${i}`]) {
         result[`answer${i}`] = x[`answer0${i}`];
         result[`answer${i}Description`] = x[`answer0${i + 2}`];
-        result[`answer${i}Score`] = x[`answer0${i}`];
+        result[`answer${i}Score`] = x[`answerScore0${i}`];
       } else {
         break;
       }

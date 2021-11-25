@@ -6,20 +6,30 @@ import { sub_1, sub_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 
 const Question = props => {
-  const { title, answer1, answer2, index } = props;
-
+  const { questionData, currentScore, onClick } = props; // questionData 비교
+  console.log(currentScore); //현재 저장한 점수
   return (
     <div>
       <QuestionWrapper>
-        <QuestionForm key={title}>{title}</QuestionForm>
+        <QuestionForm key={questionData.title}>{questionData.title}</QuestionForm>
         <AnswerForm>
           <div>
-            <input type="radio" name={index} />
-            <label key={answer1}>{answer1}</label>
+            <input
+              defaultChecked={questionData.answer1Score === currentScore}
+              onClick={() => onClick(questionData.index, questionData.answer1Score)}
+              type="radio"
+              name={questionData.index}
+            />
+            <label key={questionData.answer1}>{questionData.answer1}</label>
           </div>
           <div>
-            <input type="radio" name={index} />
-            <label key={answer2}>{answer2}</label>
+            <input
+              defaultChecked={questionData.answer2Score === currentScore}
+              onClick={() => onClick(questionData.index, questionData.answer2Score)}
+              type="radio"
+              name={questionData.index}
+            />
+            <label key={questionData.answer2}>{questionData.answer2}</label>
           </div>
         </AnswerForm>
       </QuestionWrapper>
