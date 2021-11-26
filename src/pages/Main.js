@@ -18,6 +18,12 @@ const Main = props => {
 
   const handleGenderChange = index => {
     setGender(index ? "Male" : "Female");
+    console.log(index ? "Male" : "Female");
+  };
+
+  const handleNameChange = e => {
+    setName(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
@@ -27,7 +33,7 @@ const Main = props => {
         <Title>직업가치관검사</Title>
         <Name>
           <SubTitle>이름</SubTitle>
-          <NameInput placeholder="" onChange={e => setName(e.target.value)} value={name} />
+          <NameInput placeholder="" onChange={handleNameChange} value={name} />
         </Name>
         <SubTitle>성별</SubTitle>
         <Gender>
@@ -41,10 +47,9 @@ const Main = props => {
           </RadioGroup>
         </Gender>
         <ButtonWrapper>
-        {error.length > 0 && ` ${error}`}
-          <Button
+          <Error>{error.length > 0 && ` ${error}`}</Error>          <Button
             _onClick={() => {
-              if (!gender&&!name) {
+              if (!gender && !name) {
                 setError("이름과 성별을 입력해주세요.");
               } else if (!gender) {
                 setError("성별을 입력해주세요.");
@@ -109,6 +114,16 @@ const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: right;
+`;
+
+const Error = styled.div`
+  width: 50%;
+  height: 3.4rem;
+  margin-right: 2rem;
+  text-align: left;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
 `;
 
 export default Main;
