@@ -39,6 +39,7 @@ const Test = props => {
   const [endPage, setEndPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [answers, setAnswers] = useState(new Array(28).fill(0));
+  const [loading, setLoading] = useState(false);
 
   const questionPerPage = 5;
 
@@ -47,12 +48,14 @@ const Test = props => {
     const endIndex = startIndex + itemPerPage;
     return arr.slice(startIndex, endIndex);
   };
-  
+
   useEffect(() => {
     const fetchQuestions = async () => {
+      setLoading(true);
       const data = await fetchData();
       setQuestions(data);
       setEndPage(Math.round(data.length / questionPerPage));
+      setLoading(false);
     };
     fetchQuestions();
   }, []);
@@ -74,6 +77,15 @@ const Test = props => {
     setCurrentPage(currentPage + 1);
   };
 
+  if (loading)
+    return (
+      <Layout>
+        <Container>
+          <Logo />
+          <Loading>잠시만 기다려 주세요.</Loading>
+        </Container>
+      </Layout>
+    );
   return (
     <Layout>
       <Container>
@@ -104,6 +116,11 @@ const Test = props => {
     </Layout>
   );
 };
+
+const Loading = styled.span`
+  ${head_1}
+  text-align: center;
+`;
 
 const Title = styled.h1`
   ${head_1}
