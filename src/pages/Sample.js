@@ -11,6 +11,7 @@ import { head_1, head_3, sub_1, sub_2 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import theme from "../shared/theme";
 import ProgressBar from "../components/Progress";
+import Error from "../components/Error";
 
 const Sample = props => {
   const { history } = props;
@@ -25,7 +26,6 @@ const Sample = props => {
     const fetch = async () => {
       try {
         const question = (await fetchData())[0];
-
         setQuestion(question.title);
         setAnswer01(question.answer1);
         setAnswer02(question.answer2);
@@ -80,7 +80,7 @@ const Sample = props => {
           </AnswerSample>
         </QuestionWrapper>
         <ButtonWrapper>
-          {error.length > 0 && ` ${error}`}
+          <Error>{error}</Error>
           <Button
             _onClick={() => {
               if (valid) history.push("/test");

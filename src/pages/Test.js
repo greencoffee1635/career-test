@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import fetchData from "../api/fetch";
@@ -11,6 +11,7 @@ import { head_1 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
+import Error from "../components/Error";
 
 /*
 answerScore - > 28 개
@@ -41,7 +42,6 @@ const Test = props => {
   const [answers, setAnswers] = useState(new Array(28).fill(0));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const questionPerPage = 5;
 
@@ -75,11 +75,6 @@ const Test = props => {
     if (currentPage < 1) history.push("/sample");
   };
 
-  // const handleNextButton = () => {
-  //   setCurrentPage(currentPage + 1);
-  // };
-
-  // 1.
   const handleNextButton = e => {
     e.preventDefault();
     if (answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0) {
@@ -89,24 +84,6 @@ const Test = props => {
       setCurrentPage(currentPage + 1);
     }
   };
-
-  // 2.
-  // const handleNextButton = e => {
-  //   e.preventDefault();
-  //   const checkButton = answers.slice(currentPage * 5, currentPage * 5 + 5);
-  //   if (answers) {
-  //     answers.slice(currentPage * 5, currentPage * 5 + 5);
-  //     setError("빈칸을 채워주세요.");
-  //     setButtonDisabled(checkButton.indexOf("0") === -1 ? false : true);
-  //   } else {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  // 3.
-  // const disable = useMemo(() => {
-  //   return answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0;
-  // }, [answers, currentPage]);
 
   if (loading)
     return (
@@ -133,17 +110,8 @@ const Test = props => {
           ))}
         <ButtonWrapper>
           {(currentPage > 0, currentPage < 6 && <Button _onClick={handlePrevButton} text="이전"></Button>)}
-          {error.length > 0 && ` ${error}`}
-          {/* 에러 메시지 스타일 추가하기 */}
-          {currentPage < endPage - 1 && (
-            <Button
-              _onClick={handleNextButton}
-              // disabled={answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0}
-              // disabled={buttonDisabled}
-              // disabled={disable}
-              text="다음"
-            ></Button>
-          )}
+          <Error>{error}</Error>
+          {currentPage < endPage - 1 && <Button _onClick={handleNextButton} text="다음"></Button>}
           {currentPage === endPage - 1 && (
             <Button
               _onClick={e => {

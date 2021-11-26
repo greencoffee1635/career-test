@@ -9,6 +9,7 @@ import Button from "../elements/Button";
 import { head_1, head_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 import Logo from "../components/Logo";
+import Error from "../components/Error";
 
 const Main = props => {
   const { history } = props;
@@ -47,7 +48,8 @@ const Main = props => {
           </RadioGroup>
         </Gender>
         <ButtonWrapper>
-          <Error>{error.length > 0 && ` ${error}`}</Error>          <Button
+          <Error>{error}</Error>
+          <Button
             _onClick={() => {
               if (!gender && !name) {
                 setError("이름과 성별을 입력해주세요.");
@@ -116,14 +118,14 @@ const ButtonWrapper = styled.div`
   justify-content: right;
 `;
 
-const Error = styled.div`
-  width: 50%;
-  height: 3.4rem;
-  margin-right: 2rem;
-  text-align: left;
-  justify-content: flex-end;
-  align-items: center;
-  display: flex;
-`;
+// const Error = styled.div`
+//   width: 50%;
+//   height: 3.4rem;
+//   margin-right: 2rem;
+//   text-align: left;
+//   justify-content: flex-end;
+//   align-items: center;
+//   display: flex;
+// `;
 
 export default Main;
