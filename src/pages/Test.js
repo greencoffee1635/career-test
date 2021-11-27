@@ -7,11 +7,12 @@ import fetchData from "../api/fetch";
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
-import { head_1 } from "../shared/textStyle";
+import { logo, head_1 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
 import Error from "../components/Error";
+import theme from "../shared/theme";
 
 const Test = props => {
   const { history } = props;
@@ -45,8 +46,8 @@ const Test = props => {
     const temp = [...answers];
     temp[index] = score;
     setAnswers(temp);
-    // console.log(index);
-    // console.log(answers);
+    console.log(index);
+    console.log(answers);
   };
 
   const handlePrevButton = () => {
@@ -84,7 +85,7 @@ const Test = props => {
           <div>
             <Title>검사 진행</Title>
           </div>
-          <ProgressBar color={"#7979F7"} width={"30rem"} value={0} max={100} />
+          <ProgressBar color={"#7979F7"} width={"35rem"} value={30} max={100} />
         </div>
         {questions &&
           paginate(questions, currentPage, questionPerPage).map(x => (
@@ -115,14 +116,16 @@ const Test = props => {
 };
 
 const Loading = styled.span`
-  ${head_1}
+  ${logo}
   text-align: center;
   margin: 5rem 0 2rem 0;
+  color: ${props => theme.colors.main};
 `;
 
 const Title = styled.h1`
   ${head_1}
   margin: 5rem 0 2rem 0;
+  color: ${props => theme.colors.main};
 `;
 
 const ButtonWrapper = styled.article`

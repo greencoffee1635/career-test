@@ -7,6 +7,8 @@ import Container from "../components/Container";
 import Button from "../elements/Button";
 import { head_1, head_3 } from "../shared/textStyle";
 import Logo from "../components/Logo";
+import theme from "../shared/theme";
+
 
 const Result = props => {
   const { history } = props;
@@ -41,6 +43,7 @@ const TitleWrapper = styled.article`
 
 const Title = styled.h1`
   ${head_1}
+  color: ${props => theme.colors.main};
   margin-top: 0;
 `;
 

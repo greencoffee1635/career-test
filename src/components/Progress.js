@@ -9,7 +9,7 @@ const Container = styled.div`
   }
 
   progress[value] {
-    width: 30rem;
+    width: 35rem;
     -webkit-appearance: none;
     appearance: none;
   }
@@ -46,7 +46,7 @@ ProgressPerc.propTypes = {
 ProgressPerc.defaultProps = {
   max: 100,
   color: "lightBlue",
-  width: "250px",
+  width: "35rem",
 };
 
 export default ProgressPerc;

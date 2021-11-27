@@ -32,13 +32,21 @@ const Question = props => {
             <label key={questionData.answer2}>{questionData.answer2}</label>
           </div>
         </AnswerForm>
+        <DescWrapper>
+          <Description key={questionData.answer2}>
+            {questionData.answer1} : {questionData.answer1Description}
+            <br />
+            {questionData.answer2} : {questionData.answer2Description}
+          </Description>
+        </DescWrapper>
       </QuestionWrapper>
     </div>
   );
 };
 
 const QuestionWrapper = styled.div`
-  height: 13rem;
+  height: 16rem;
+  /* border: 1px solid ${props => theme.colors.main}; */
   border: 1px solid ${props => theme.colors.gray};
   background-color: ${props => theme.colors.lightgray};
   border-radius: 6px;
@@ -46,12 +54,14 @@ const QuestionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 1rem 0 0 0;
+  
 `;
 
 const QuestionForm = styled.p`
   ${sub_1}
   margin-bottom: 2rem;
   text-align: center;
+  color: ${props => theme.colors.main};
 `;
 
 const AnswerForm = styled.div`
@@ -59,7 +69,22 @@ const AnswerForm = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-evenly;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
+`;
+
+const DescWrapper = styled.article`
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Description = styled.p`
+  font-size: 0.8rem;
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+  text-align: center;
 `;
 
 export default Question;

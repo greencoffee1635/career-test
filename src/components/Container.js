@@ -10,7 +10,7 @@ const Container = ({ children }) => {
 };
 
 const DefaultForm = styled.section`
-  width: 30rem;
+  width: 35rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

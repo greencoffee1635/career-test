@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // components & elements
 import theme from "../shared/theme";
-import { head_1 } from "../shared/textStyle";
+import { logo } from "../shared/textStyle";
 
 const Logo = () => {
   return (
@@ -16,7 +16,7 @@ const Logo = () => {
 const EliceLogo = "/* elice */";
 
 const LogoWrap = styled.header`
-  ${head_1}
+  ${logo}
   color: ${props => theme.colors.main};
   text-align: center;
 `;

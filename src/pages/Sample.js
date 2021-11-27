@@ -97,6 +97,7 @@ const TitleWrapper = styled.article`
 const Title = styled.h1`
   ${head_1}
   margin-top: 0;
+  color: ${props => theme.colors.main};
 `;
 
 const SubTitle = styled.h2`
@@ -116,6 +117,7 @@ const QuestionWrapper = styled.article`
 const QuestionSample = styled.p`
   ${sub_1}
   text-align: center;
+  color: ${props => theme.colors.main};
   margin-bottom: 2rem;
 `;
 

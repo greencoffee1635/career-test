@@ -19,12 +19,12 @@ const Main = props => {
 
   const handleGenderChange = index => {
     setGender(index ? "Male" : "Female");
-    // console.log(index ? "Male" : "Female");
+    console.log(index ? "Male" : "Female");
   };
 
   const handleNameChange = e => {
     setName(e.target.value);
-    // console.log(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
@@ -72,6 +72,7 @@ const Main = props => {
 const Title = styled.h1`
   ${head_1}
   margin: 5rem 0 1rem 0;
+  color: ${props => theme.colors.main};
 `;
 
 const SubTitle = styled.h2`
@@ -87,7 +88,7 @@ const NameWrapper = styled.article`
 `;
 
 const NameInput = styled.input`
-  width: 30rem;
+  width: 35rem;
   height: 3.4rem;
   font-size: 1.4rem;
   text-indent: 0.8rem;

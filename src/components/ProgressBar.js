@@ -15,7 +15,7 @@ const ProgressBar = () => {
       });
     }, 1000);
   }, []);
-  return <ProgressPerc color={"#7979F7"} width={"30rem"} value={40} max={100} />;
+  return <ProgressPerc color={"#7979F7"} width={"35rem"} value={40} max={100} />;
 };
 
 export default ProgressBar;

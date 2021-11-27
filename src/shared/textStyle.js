@@ -1,8 +1,14 @@
 import { css } from "styled-components";
 
-// 로고, page title
+// 로고
+export const logo = css`
+  font-size: 1.8rem;
+  font-weight: 600;
+`;
+
+// page title
 export const head_1 = css`
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 600;
 `;
 
