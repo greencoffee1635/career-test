@@ -9,7 +9,7 @@ const Container = ({ children }) => {
     );
 };
 
-const DefaultForm = styled.div`
+const DefaultForm = styled.section`
   width: 30rem;
   display: flex;
   flex-direction: column;

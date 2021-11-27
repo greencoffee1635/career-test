@@ -13,27 +13,6 @@ import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
 import Error from "../components/Error";
 
-/*
-answerScore - > 28 개
-    0 <- 체크 안했을 때.
-    0 이 아닌 다른 수 < - 체크 했을 때
-    answerScore 리스트에서
-    0이 아닌 갯수 / 28
-    28/28 = 1 -> 100%
-    14/28 = 0.5 -> 50%
-
-    { percent = answerScore.filter(x=>x!==0).length / 28 }
-    체크한 것 중에 0이 아닌 갯수를 가져온다 그리고 28로 나눈다
-    
-*/
-
-/*
-  # 다음 버튼 활성화
-  
-    answerScore.slice((현재페이지-1)*5, (현재페이지*5)+5) 
-    현재페이지 기준으로 5개씩 잘라온다.
-    5개의 문항이 전부 0이 아닐 경우. filter(x=>x!==0).length === 0 -> 다음 버튼 활성화.
-*/
 const Test = props => {
   const { history } = props;
   const [questions, setQuestions] = useState(null);
@@ -66,8 +45,8 @@ const Test = props => {
     const temp = [...answers];
     temp[index] = score;
     setAnswers(temp);
-    console.log(index);
-    console.log(answers);
+    // console.log(index);
+    // console.log(answers);
   };
 
   const handlePrevButton = () => {
@@ -79,7 +58,6 @@ const Test = props => {
     e.preventDefault();
     if (answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0) {
       setError("빈칸을 채워주세요.");
-      // console.log(answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0 ? false : true);
     } else {
       setCurrentPage(currentPage + 1);
     }
@@ -94,6 +72,7 @@ const Test = props => {
         </Container>
       </Layout>
     );
+
   return (
     <Layout>
       <Container>
@@ -138,16 +117,14 @@ const Loading = styled.span`
 
 const Title = styled.h1`
   ${head_1}
-  margin-top: 5rem;
-  align-items: left;
-  margin-bottom: 2rem;
+  margin: 5rem 0 2rem 0;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.article`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: 2rem;
 `;
 
 export default Test;

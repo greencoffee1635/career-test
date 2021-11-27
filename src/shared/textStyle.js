@@ -15,6 +15,7 @@ export const head_2 = css`
 // 문항 설명
 export const head_3 = css`
   font-size: 1rem;
+  font-weight: 500;
 `;
 
 // 문항 제목

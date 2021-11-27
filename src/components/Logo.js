@@ -15,7 +15,7 @@ const Logo = () => {
 
 const EliceLogo = "/* elice */";
 
-const LogoWrap = styled.h1`
+const LogoWrap = styled.header`
   ${head_1}
   color: ${props => theme.colors.main};
   text-align: center;

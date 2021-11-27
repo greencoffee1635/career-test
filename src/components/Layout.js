@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   );
 };
 
-const DefaultLayout = styled.div`
+const DefaultLayout = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
