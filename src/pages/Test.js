@@ -52,14 +52,17 @@ const Test = props => {
   const handlePrevButton = () => {
     setCurrentPage(currentPage - 1);
     if (currentPage < 1) history.push("/sample");
+    setError("");
   };
 
+  const filterQuestion = answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length;
   const handleNextButton = e => {
     e.preventDefault();
-    if (answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0) {
+    if (filterQuestion !== 0) {
       setError("빈칸을 채워주세요.");
     } else {
       setCurrentPage(currentPage + 1);
+      setError("");
     }
   };
 
@@ -95,10 +98,11 @@ const Test = props => {
             <Button
               _onClick={e => {
                 e.preventDefault();
-                if (answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length !== 0) {
+                if (filterQuestion !== 0) {
                   setError("빈칸을 채워주세요.");
                 } else {
                   history.push("/result");
+                  setError("");
                 }
               }}
               text="제출"
@@ -113,6 +117,7 @@ const Test = props => {
 const Loading = styled.span`
   ${head_1}
   text-align: center;
+  margin: 5rem 0 2rem 0;
 `;
 
 const Title = styled.h1`
