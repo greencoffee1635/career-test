@@ -29,6 +29,12 @@ export const sub_2 = css`
   font-weight: 400;
 `;
 
+// 에러 메시지
+export const sub_3 = css`
+  font-size: 1rem;
+  font-weight: 400;
+`;
+
 // 버튼
 export const button = css`
   font-size: 1rem;

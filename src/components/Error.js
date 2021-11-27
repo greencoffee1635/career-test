@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+// components & elements
+import { sub_3 } from "../shared/textStyle";
+
 const Error = ({ children }) => {
   return <ErrorMsg>{children}</ErrorMsg>;
 };
 
 const ErrorMsg = styled.div`
+  ${sub_3}
   width: 50%;
   height: 3.4rem;
-  margin-right: 1.6rem;
-  text-align: left;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
-  display: flex;
+  margin-right: 1.6rem;
 `;
 
 export default Error;
