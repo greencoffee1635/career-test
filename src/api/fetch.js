@@ -10,6 +10,7 @@ const fetchData = async () => {
     let result = {};
     result["index"] = index;
     result["title"] = x.question;
+    result["qitemNo"] = x.qitemNo;
     for (let i = 1; i <= 2; i++) {
       if (x[`answer0${i}`]) {
         result[`answer${i}`] = x[`answer0${i}`];
@@ -23,6 +24,7 @@ const fetchData = async () => {
   });
 
   return questions;
+  
 };
 
 export default fetchData;
