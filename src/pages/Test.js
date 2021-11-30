@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { useLocation } from "react-router-dom";
 import fetchData from "../api/fetch";
 
 // components & elements
 import Layout from "../components/Layout";
 import Container from "../components/Container";
 import Button from "../elements/Button";
-import { logo, head_1 } from "../shared/textStyle";
+import { logo, head_1, sub_1, sub_2 } from "../shared/textStyle";
 import Logo from "../components/Logo";
 import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
@@ -22,6 +22,7 @@ const Test = props => {
   const [answers, setAnswers] = useState(new Array(28).fill(0));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const location = useLocation();
 
   const questionPerPage = 5;
 
@@ -30,6 +31,8 @@ const Test = props => {
     const endIndex = startIndex + itemPerPage;
     return arr.slice(startIndex, endIndex);
   };
+
+  const [answerList, setAnswerList] = useState(() => JSON.parse(window.localStorage.getItem("answerlist")));
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -42,12 +45,13 @@ const Test = props => {
     fetchQuestions();
   }, []);
 
-  const handleQuestionClick = (index, score) => {
-    const temp = [...answers];
-    temp[index] = score;
-    setAnswers(temp);
-    console.log(index);
-    console.log(answers);
+  const handleCheck = (e, index, score) => {
+    // const temp = [...answers];
+    // temp[index] = score;
+    setAnswers([...answers, e.target.value]);
+    // console.log(index);
+    // console.log(answers);
+    localStorage.setItem(e.target.name, e.target.value);
   };
 
   const handlePrevButton = () => {
@@ -58,13 +62,13 @@ const Test = props => {
 
   const filterQuestion = answers.slice(currentPage * 5, currentPage * 5 + 5).filter(e => e === 0).length;
   const handleNextButton = e => {
-    e.preventDefault();
-    if (filterQuestion !== 0) {
-      setError("빈칸을 채워주세요.");
-    } else {
-      setCurrentPage(currentPage + 1);
-      setError("");
-    }
+    // e.preventDefault();
+    // if (filterQuestion !== 0) {
+    // setError("빈칸을 채워주세요.");
+    // } else {
+    setCurrentPage(currentPage + 1);
+    // setError("");
+    // }
   };
 
   if (loading)
@@ -89,8 +93,31 @@ const Test = props => {
         </div>
         {questions &&
           paginate(questions, currentPage, questionPerPage).map(x => (
-            <Question key={x.index} onClick={handleQuestionClick} currentScore={answers[x.index]} questionData={x} />
+            <QuestionWrapper>
+              <QuestionForm key={x.title}>{x.title}</QuestionForm>
+              <AnswerForm>
+                <form key={x.qitemNo} onChange={handleCheck}>
+                  <Question
+                    name={`B${x.qitemNo}`}
+                    value={x.answer1Score}
+                    currentScore={answers[x.index]}
+                    questionData={x}
+                    title={x.answer1}
+                    description={x.answer1Description}
+                  />
+                  <Question
+                    name={`B${x.qitemNo}`}
+                    value={x.answer2Score}
+                    currentScore={answers[x.index]}
+                    questionData={x}
+                    title={x.answer2}
+                    description={x.answer2Description}
+                  />
+                </form>
+              </AnswerForm>
+            </QuestionWrapper>
           ))}
+
         <ButtonWrapper>
           {(currentPage > 0, currentPage < 6 && <Button _onClick={handlePrevButton} text="이전"></Button>)}
           <Error>{error}</Error>
@@ -98,13 +125,13 @@ const Test = props => {
           {currentPage === endPage - 1 && (
             <Button
               _onClick={e => {
-                e.preventDefault();
-                if (filterQuestion !== 0) {
-                  setError("빈칸을 채워주세요.");
-                } else {
-                  history.push("/result");
-                  setError("");
-                }
+                // e.preventDefault();
+                // if (filterQuestion !== 0) {
+                //   setError("빈칸을 채워주세요.");
+                // } else {
+                history.push("/result");
+                //   setError("");
+                // }
               }}
               text="제출"
             ></Button>
@@ -133,6 +160,32 @@ const ButtonWrapper = styled.article`
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+`;
+const QuestionWrapper = styled.div`
+  height: 16rem;
+  /* border: 1px solid ${props => theme.colors.main}; */
+  border: 1px solid ${props => theme.colors.gray};
+  background-color: ${props => theme.colors.lightgray};
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0 0 0;
+`;
+
+const QuestionForm = styled.p`
+  ${sub_1}
+  margin-bottom: 2rem;
+  text-align: center;
+  color: ${props => theme.colors.main};
+`;
+
+const AnswerForm = styled.div`
+  ${sub_2}
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 2rem;
 `;
 
 export default Test;

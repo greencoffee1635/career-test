@@ -10,22 +10,58 @@ import { head_1, head_2 } from "../shared/textStyle";
 import theme from "../shared/theme";
 import Logo from "../components/Logo";
 import Error from "../components/Error";
+import { useLocation } from "react-router-dom";
 
 const Main = props => {
   const { history } = props;
-  const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
+  // const [name, setName] = useState("");
+  const [gender, setGender] = useState(() => window.localStorage.getItem("userGender") || "");
+  //쿠키가 있다면 값으로 존재하지않는다면 공백으로 처리
+  const [name, setName] = useState(() => window.localStorage.getItem("userName") || "");
   const [error, setError] = useState("");
-
-  const handleGenderChange = index => {
-    setGender(index ? "Male" : "Female");
-    console.log(index ? "Male" : "Female");
-  };
-
+  const location = useLocation();
+  // const [answerList, setAnswerList] = useState(() => JSON.parse(window.localStorage.getItem("answerlist")));
+  // const [userInfo, setUserInfo] = useState(() => JSON.parse(window.localStorage.getItem("userInfo")) ||
+  // {
+  //   userName: "",
+  //   userGender: "",
+  // });
   const handleNameChange = e => {
     setName(e.target.value);
-    console.log(e.target.value);
+    console.log(name);
+    console.log(e.target.name);
+    // setUserInfo([...userInfo, e.target.value]);
+    localStorage.setItem(e.target.name, e.target.value);
   };
+
+  const handleGenderChange = value => {
+    // const selectedGender = value ? "100323" : "100324";
+    console.log(value);
+    setGender(value);
+    console.log(value === "100323" ? "Male" : "Female");
+    // setUserInfo([...userInfo, e.target.value]);
+    localStorage.setItem("userGender", value);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // if (userInfo.userGender === "" || userInfo.userName === "") {
+    // if (gender === "" || name === "") {
+    //   alert("이름과 성별을 정확히 입력해주세요.");
+    // } else {
+    //   history.push("/sample");
+    // }
+
+    if (!gender && !name) {
+      setError("이름과 성별을 입력해주세요.");
+    } else if (!gender) {
+      setError("성별을 입력해주세요.");
+    } else if (!name) {
+      setError("이름을 입력해주세요.");
+    } else {
+      history.push("/sample");
+    }
+  }
 
   return (
     <Layout>
@@ -34,15 +70,15 @@ const Main = props => {
         <Title>직업가치관검사</Title>
         <SubTitle>이름</SubTitle>
         <NameWrapper>
-          <NameInput placeholder="" onChange={handleNameChange} value={name} />
+          <NameInput placeholder="" onChange={handleNameChange} name="userName" value={name} />
         </NameWrapper>
         <SubTitle>성별</SubTitle>
         <GenderWrapper>
-          <RadioGroup horizontal>
-            <RadioButton value="Male" rootColor="#C4C4C4" pointColor="#909090" onChange={handleGenderChange} checked={gender === "Female"}>
+          <RadioGroup horizontal onChange={handleGenderChange} name="userGender" value={gender}>
+            <RadioButton value="100324" rootColor="#C4C4C4" pointColor="#909090">
               여성
             </RadioButton>
-            <RadioButton value="Female" rootColor="#C4C4C4" pointColor="#909090" onChange={handleGenderChange} checked={gender === "Male"}>
+            <RadioButton value="100323" rootColor="#C4C4C4" pointColor="#909090">
               남성
             </RadioButton>
           </RadioGroup>
@@ -50,18 +86,18 @@ const Main = props => {
         <ButtonWrapper>
           <Error>{error}</Error>
           <Button
-            _onClick={() => {
-              if (!gender && !name) {
-                setError("이름과 성별을 입력해주세요.");
-              } else if (!gender) {
-                setError("성별을 입력해주세요.");
-              } else if (!name) {
-                setError("이름을 입력해주세요.");
-              } else {
-                history.push("/sample");
-              }
-            }}
-            text="검사시작"
+          _onClick={handleSubmit}
+          // if (!gender && !name) {
+          //   setError("이름과 성별을 입력해주세요.");
+          // } else if (!gender) {
+          //   setError("성별을 입력해주세요.");
+          // } else if (!name) {
+          //   setError("이름을 입력해주세요.");
+          // } else {
+          //   history.push("/sample");
+          // }
+          // }}
+          text="검사시작"
           />
         </ButtonWrapper>
       </Container>
