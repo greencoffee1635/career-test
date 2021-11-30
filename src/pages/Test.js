@@ -98,20 +98,21 @@ const Test = props => {
               <AnswerForm>
                 <form key={x.qitemNo} onChange={handleCheck}>
                   <Question
+                    // question={questionObject}
                     name={`B${x.qitemNo}`}
                     value={x.answer1Score}
                     currentScore={answers[x.index]}
                     questionData={x}
-                    title={x.answer1}
-                    description={x.answer1Description}
+                    // title={x.answer1}
+                    // description={x.answer1Description}
                   />
                   <Question
                     name={`B${x.qitemNo}`}
                     value={x.answer2Score}
                     currentScore={answers[x.index]}
                     questionData={x}
-                    title={x.answer2}
-                    description={x.answer2Description}
+                    // title={x.answer2}
+                    // description={x.answer2Description}
                   />
                 </form>
               </AnswerForm>

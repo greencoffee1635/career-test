@@ -16,10 +16,10 @@ const Question = props => {
   return (
     <div>
       <input defaultChecked={questionData.answer1Score === currentScore} type="radio" value={value} name={name} />
-      <label key={props.key}>{props.title}</label>
+      <label key={props.key}>{questionData.title}</label>
       <DescWrapper>
-        <Description key={props.title}>
-          {props.title} : {props.description}
+        <Description key={questionData.title}>
+          {questionData.title} : {questionData.description}
         </Description>
       </DescWrapper>
     </div>
