@@ -33,7 +33,7 @@ const Test = props => {
     return arr.slice(startIndex, endIndex);
   };
 
-  const [answerList, setAnswerList] = useState(() => JSON.parse(window.localStorage.getItem("answerlist")));
+  // const [answerList, setAnswerList] = useState(() => JSON.parse(window.localStorage.getItem("answerlist")));
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -52,7 +52,9 @@ const Test = props => {
     setAnswers([...answers, e.target.value]);
     // console.log(index);
     // console.log(answers);
-    localStorage.setItem(e.target.name, e.target.value);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(e.target.name, e.target.value);
+    }
   };
 
   const handlePrevButton = () => {

@@ -15,9 +15,10 @@ import { useLocation } from "react-router-dom";
 const Main = props => {
   const { history } = props;
   // const [name, setName] = useState("");
-  const [gender, setGender] = useState(() => window.localStorage.getItem("userGender") || "");
-  //쿠키가 있다면 값으로 존재하지않는다면 공백으로 처리
-  const [name, setName] = useState(() => window.localStorage.getItem("userName") || "");
+  // 윈도우 객체가 있을때 로컬스토리지 getItem 호출하고 객체가 undefined(정의되지 않을 때) 공백문자열을 반환한다.
+  const [gender, setGender] = useState(() => typeof window !== 'undefined'?window.localStorage.getItem("userGender"): "" || "");
+  //쿠키가 있다면 값으로 존재하지 않는다면 공백으로 처리
+  const [name, setName] = useState(() => typeof window !== 'undefined'?window.localStorage.getItem("userName"): "" || "");
   const [error, setError] = useState("");
   const location = useLocation();
   // const [answerList, setAnswerList] = useState(() => JSON.parse(window.localStorage.getItem("answerlist")));
@@ -31,7 +32,9 @@ const Main = props => {
     console.log(name);
     console.log(e.target.name);
     // setUserInfo([...userInfo, e.target.value]);
-    localStorage.setItem(e.target.name, e.target.value);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(e.target.name, e.target.value);
+    }
   };
 
   const handleGenderChange = value => {
@@ -40,7 +43,9 @@ const Main = props => {
     setGender(value);
     console.log(value === "100323" ? "Male" : "Female");
     // setUserInfo([...userInfo, e.target.value]);
-    localStorage.setItem("userGender", value);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userGender", value);
+    }
   };
 
   function handleSubmit(e) {
@@ -86,18 +91,18 @@ const Main = props => {
         <ButtonWrapper>
           <Error>{error}</Error>
           <Button
-          _onClick={handleSubmit}
-          // if (!gender && !name) {
-          //   setError("이름과 성별을 입력해주세요.");
-          // } else if (!gender) {
-          //   setError("성별을 입력해주세요.");
-          // } else if (!name) {
-          //   setError("이름을 입력해주세요.");
-          // } else {
-          //   history.push("/sample");
-          // }
-          // }}
-          text="검사시작"
+            _onClick={handleSubmit}
+            // if (!gender && !name) {
+            //   setError("이름과 성별을 입력해주세요.");
+            // } else if (!gender) {
+            //   setError("성별을 입력해주세요.");
+            // } else if (!name) {
+            //   setError("이름을 입력해주세요.");
+            // } else {
+            //   history.push("/sample");
+            // }
+            // }}
+            text="검사시작"
           />
         </ButtonWrapper>
       </Container>
