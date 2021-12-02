@@ -104,7 +104,6 @@ const Test = props => {
                     currentScore={answers[x.index]}
                     questionData={x}
                     title={x.answer1}
-                    // description={x.answer1Description}
                   />
                   <Question
                     name={`B${x.qitemNo}`}
@@ -112,7 +111,6 @@ const Test = props => {
                     currentScore={answers[x.index]}
                     questionData={x}
                     title={x.answer2}
-                    // description={x.answer2Description}
                   />
                 </AnswerBox>
               </AnswerForm>
@@ -169,7 +167,6 @@ const ButtonWrapper = styled.article`
 
 const QuestionWrapper = styled.div`
   height: 16rem;
-  /* border: 1px solid ${props => theme.colors.main}; */
   border: 1px solid ${props => theme.colors.gray};
   background-color: ${props => theme.colors.lightgray};
   border-radius: 6px;
@@ -189,14 +186,13 @@ const QuestionForm = styled.p`
 const AnswerForm = styled.div`
   ${sub_2}
   display: flex;
-  justify-content: center;
+  justify-content: right;
   padding-bottom: 2rem;
 `;
 
 const AnswerBox = styled.div`
   width: 90%;
   display: flex;
-  justify-content: center;
 `;
 
 const DescForm = styled.div`

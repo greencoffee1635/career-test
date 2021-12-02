@@ -36,8 +36,14 @@ export const sub_2 = css`
   font-weight: 400;
 `;
 
-// 에러 메시지
+// Description
 export const sub_3 = css`
+  font-size: 0.8rem;
+  font-weight: 400;
+`;
+
+// 에러 메시지
+export const sub_4 = css`
   font-size: 1rem;
   font-weight: 400;
 `;

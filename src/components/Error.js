@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 // components & elements
-import { sub_3 } from "../shared/textStyle";
+import { sub_4 } from "../shared/textStyle";
 
 const Error = ({ children }) => {
   return <ErrorMsg>{children}</ErrorMsg>;
 };
 
 const ErrorMsg = styled.div`
-  ${sub_3}
+  ${sub_4}
   width: 50%;
   height: 3.4rem;
   display: flex;

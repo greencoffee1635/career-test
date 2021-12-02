@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // components & elements
-import { sub_1, sub_2 } from "../shared/textStyle";
-import theme from "../shared/theme";
+import { sub_3 } from "../shared/textStyle";
 
 const Description = props => {
   return (
@@ -24,10 +23,11 @@ const DescWrapper = styled.article`
 `;
 
 const Desc = styled.div`
+  ${sub_3};
   font-size: 0.8rem;
   display: flex;
-  margin: 0;
   justify-content: flex-end;
+  margin: 0;
 `;
 
 export default Description;

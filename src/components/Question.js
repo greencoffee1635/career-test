@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// components & elements
-import { sub_1, sub_2 } from "../shared/textStyle";
-import theme from "../shared/theme";
-
 const Question = props => {
   const { questionData, currentScore, value, name } = props; // questionData 비교
 
@@ -21,18 +17,17 @@ const Question = props => {
   );
 };
 
-const AnswerInput = styled.input`
-  display: flex;
-  align-items: center;
-  margin:5px 3px 3px 3px;
-`;
-
 const AnswerWrapper = styled.div`
+  width: 13rem;
   display: flex;
   justify-content: center;
-  width: 50%;
   text-indent: 0.1rem;
 `;
 
+const AnswerInput = styled.input`
+  display: flex;
+  align-items: center;
+  margin: 5px 3px 3px 3px;
+`;
 
 export default Question;
