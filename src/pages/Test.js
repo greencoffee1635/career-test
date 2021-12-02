@@ -13,6 +13,7 @@ import ProgressBar from "../components/Progress";
 import Question from "../components/Question";
 import Error from "../components/Error";
 import theme from "../shared/theme";
+import Description from "../components/Description";
 
 const Test = props => {
   const { history } = props;
@@ -96,14 +97,14 @@ const Test = props => {
             <QuestionWrapper>
               <QuestionForm key={x.title}>{x.title}</QuestionForm>
               <AnswerForm>
-                <form key={x.qitemNo} onChange={handleCheck}>
+                <AnswerBox key={x.qitemNo} onChange={handleCheck}>
                   <Question
                     name={`B${x.qitemNo}`}
                     value={x.answer1Score}
                     currentScore={answers[x.index]}
                     questionData={x}
                     title={x.answer1}
-                    description={x.answer1Description}
+                    // description={x.answer1Description}
                   />
                   <Question
                     name={`B${x.qitemNo}`}
@@ -111,10 +112,14 @@ const Test = props => {
                     currentScore={answers[x.index]}
                     questionData={x}
                     title={x.answer2}
-                    description={x.answer2Description}
+                    // description={x.answer2Description}
                   />
-                </form>
+                </AnswerBox>
               </AnswerForm>
+              <DescForm>
+                <Description title={x.answer1} description={x.answer1Description} />
+                <Description title={x.answer2} description={x.answer2Description} />
+              </DescForm>
             </QuestionWrapper>
           ))}
 
@@ -161,6 +166,7 @@ const ButtonWrapper = styled.article`
   justify-content: space-between;
   margin-top: 2rem;
 `;
+
 const QuestionWrapper = styled.div`
   height: 16rem;
   /* border: 1px solid ${props => theme.colors.main}; */
@@ -182,10 +188,24 @@ const QuestionForm = styled.p`
 
 const AnswerForm = styled.div`
   ${sub_2}
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+`;
+
+const AnswerBox = styled.div`
   width: 90%;
   display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 2rem;
+  justify-content: center;
+`;
+
+const DescForm = styled.div`
+  cursor: pointer;
+  opacity: 0;
+  :hover {
+    opacity: 1;
+    transition: 2.5s ease-in;
+  }
 `;
 
 export default Test;
