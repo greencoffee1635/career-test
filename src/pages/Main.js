@@ -29,8 +29,8 @@ const Main = props => {
   // });
   const handleNameChange = e => {
     setName(e.target.value);
-    console.log(name);
-    console.log(e.target.name);
+    // console.log(name);
+    // console.log(e.target.name);
     // setUserInfo([...userInfo, e.target.value]);
     if (typeof window !== "undefined") {
       localStorage.setItem(e.target.name, e.target.value);
@@ -39,9 +39,9 @@ const Main = props => {
 
   const handleGenderChange = value => {
     // const selectedGender = value ? "100323" : "100324";
-    console.log(value);
+    // console.log(value);
     setGender(value);
-    console.log(value === "100323" ? "Male" : "Female");
+    // console.log(value === "100323" ? "Male" : "Female");
     // setUserInfo([...userInfo, e.target.value]);
     if (typeof window !== "undefined") {
       localStorage.setItem("userGender", value);

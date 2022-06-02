@@ -4,10 +4,10 @@ import styled from "styled-components";
 const Question = props => {
   const { questionData, currentScore, value, name } = props; // questionData 비교
 
-  console.log(currentScore); //현재 저장한 점수
-  console.log(questionData); //현재 저장한 점수
-  console.log(typeof questionData.answer1Score); //현재 저장한 점수
-  console.log(questionData.answer2Score); //현재 저장한 점수
+  // console.log(currentScore); //현재 저장한 점수
+  // console.log(questionData); //현재 저장한 점수
+  // console.log(typeof questionData.answer1Score); //현재 저장한 점수
+  // console.log(questionData.answer2Score); //현재 저장한 점수
 
   return (
     <AnswerWrapper>
